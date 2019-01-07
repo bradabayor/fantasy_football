@@ -12,6 +12,7 @@ const App = () => (
       <Header />
 
       <Route exact path="/" />
+      <Route exact path="team" />
       <Route exact path="/players" component={Players} />
     </div>
   </Router>

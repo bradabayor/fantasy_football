@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Loader, Pagination } from 'semantic-ui-react'
+
+import { Icon } from 'antd';
 
 import PlayerTable from './PlayerTable';
 import PlayerSearchBar from './PlayerSearchBar';
@@ -10,21 +11,18 @@ const API = require('../../utils/Msp');
 
 
 class Players extends Component {
-  constructor(props) {
+    constructor(props) {
     super(props);
 
     this.state = {
       players: null,
-      playersOnPage : null
     }
+
     this.handleChangePosition = this.handleChangePosition.bind(this);
     this.getPlayers = this.getPlayers.bind(this);
     this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
-  }
-
-  componentDidMount() {
-    this.getPlayers("All");
+    this.appendFantasyPoints = this.appendFantasyPoints.bind(this);
   }
 
   getPlayers(position) {
@@ -35,10 +33,36 @@ class Players extends Component {
       this.setState(function() {
         return {
           players : players,
-          playersOnPage : players.slice(0, 20)
         }
-      })
+      }, () => this.appendFantasyPoints())
     }.bind(this));
+  }
+
+  appendFantasyPoints() {
+    let players = this.state.players;
+
+    players.map( (player) => {
+      player.fantasyPoints = this.calculateFantasyPoints(player);
+    })
+
+    players.sort( (a, b) => {
+      let pointsA = a.fantasyPoints;
+      let pointsB = b.fantasyPoints;
+      return pointsB - pointsA;
+    })
+    
+    this.setState({ players : players });
+
+  }
+
+  calculateFantasyPoints(player) {
+    let points = 0.0;
+
+    if (player.stats.hasOwnProperty("RecTD")) {
+      points = ((player.stats.RecTD['#text'] * 6) + (player.stats.RecYards['#text'] * 0.1)).toFixed(2)
+    }
+
+    return points;
   }
 
   handleChangePosition(event, data) {
@@ -70,6 +94,8 @@ class Players extends Component {
 
     console.log(playerRange);
 
+    this.createTableData();
+
     this.setState({ playersOnPage : this.state.players.slice(playerRange[0], playerRange[1])})
   }
 
@@ -78,17 +104,8 @@ class Players extends Component {
       <div className="container">
         <PlayerSearchBar getPlayers={this.getPlayers}/>
         {!this.state.players ?
-          null :
-          <PlayerTable players={this.state.playersOnPage} updateSelectedPlayer={this.updateSelectedPlayer}/>
-        }
-        {this.state.players ?
-          <Pagination 
-            boundaryRange={0}
-            defaultActivePage={1}
-            siblingRange={1}
-            totalPages={10}
-            onPageChange={this.handlePageChange.bind(this)}
-          /> : <Loader active inline='centered' />
+          <Icon type="loading" /> :
+          <PlayerTable players={this.state.players} updateSelectedPlayer={this.updateSelectedPlayer}/>
         }
       </div>
     );
