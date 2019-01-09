@@ -5,7 +5,7 @@ import { Icon } from 'antd';
 import PlayerTable from './PlayerTable';
 import PlayerSearchBar from './PlayerSearchBar';
 
-import { calculateFantasyPoints } from '../Helpers';
+import { calculateFantasyPoints } from '../helpers/helpers';
 
 import '../../App.css';
 

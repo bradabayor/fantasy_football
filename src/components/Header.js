@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Menu, Icon } from 'antd';
 
-class Header extends Component {
+class AppHeader extends Component {
   render() {
     return (
         <Menu
@@ -24,4 +24,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default AppHeader;

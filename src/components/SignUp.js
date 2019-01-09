@@ -3,8 +3,12 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { withFirebase } from './Firebase';
 
-import { Button, Input } from 'semantic-ui-react';
+import { Form, Button, Grid, Header, Segment, Icon, Message } from 'semantic-ui-react';
 import { EventEmitter } from 'events';
+
+import LandingHeader from './LandingHeader';
+
+import '../App.css';
 
 const INITAL_STATE = {
   username : '',
@@ -16,8 +20,16 @@ const INITAL_STATE = {
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
-    <SignUpForm />
+    <LandingHeader />
+    <div style={{ marginTop : 50 }}>
+      <Grid verticalAlign="middle" textAlign="center" className="ui middle aligned center aligned grid">
+          <Grid.Column style={{ maxWidth : 450 }}>
+            <Icon name="football ball" size="huge" color="pink"></Icon>
+            <Header as="h1">Sign Up</Header>
+            <SignUpForm />
+          </Grid.Column>
+      </Grid>
+    </div>
   </div>
 );
 
@@ -64,45 +76,63 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <Input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Name"
-        />
-        <Input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email"
-        />
-        <Input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Password"
-        />
-        <Input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Confirm Password"
-        />
-        <Button
-          primary
-          type="submit"
-          disabled={IsInvalid}
-        >
-        Sign Up
-        </Button>
+      <div>
+        <Form size="large" autoComplete="off" onSubmit={this.onSubmit}>
+          <Segment style={{ Width : 450 }}>
+            <Form.Input
+              name="username"
+              value={username}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Name"
+              fluid
+            />
+            <Form.Input
+              name="email"
+              value={email}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Email"
+              fluid
+            />
+            <Form.Input
+              name="passwordOne"
+              value={passwordOne}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Password"
+              fluid
+              type="password"
+            />
+            <Form.Input
+              name="passwordTwo"
+              value={passwordTwo}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Confirm Password"
+              fluid
+              type="password"
+            />
+            <Button
+              fluid
+              color="pink"
+              type="submit"
+              disabled={IsInvalid}
+            >
+            Sign Up
+            </Button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+            
+          </Segment>
+        </Form>
+        {error && 
+          <Message
+            error
+            header="Uh Oh..."
+            content={error.message}
+            style={{ maxWidth : 450 }}
+          />}
+      </div>
     )
   }
 }
