@@ -5,10 +5,11 @@ import { Icon } from 'antd';
 import PlayerTable from './PlayerTable';
 import PlayerSearchBar from './PlayerSearchBar';
 
+import { calculateFantasyPoints } from '../Helpers';
+
 import '../../App.css';
 
 const API = require('../../utils/Msp');
-
 
 class Players extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class Players extends Component {
     let players = this.state.players;
 
     players.map( (player) => {
-      player.fantasyPoints = this.calculateFantasyPoints(player);
+      player.fantasyPoints = calculateFantasyPoints(player);
     })
 
     players.sort( (a, b) => {
@@ -52,17 +53,6 @@ class Players extends Component {
     })
     
     this.setState({ players : players });
-
-  }
-
-  calculateFantasyPoints(player) {
-    let points = 0.0;
-
-    if (player.stats.hasOwnProperty("RecTD")) {
-      points = ((player.stats.RecTD['#text'] * 6) + (player.stats.RecYards['#text'] * 0.1)).toFixed(2)
-    }
-
-    return points;
   }
 
   handleChangePosition(event, data) {

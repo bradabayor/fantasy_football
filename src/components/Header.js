@@ -13,7 +13,7 @@ class Header extends Component {
           <Menu.Item key="home">
             <NavLink exact to="/home">Home</NavLink>
           </Menu.Item>
-          <Menu.Item key="home">
+          <Menu.Item key="team">
             <NavLink exact to="/team">Team</NavLink>
           </Menu.Item>
           <Menu.Item key="players">

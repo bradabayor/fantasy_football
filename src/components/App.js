@@ -3,6 +3,7 @@ import { BrowserRouter  as Router, Route } from 'react-router-dom';
 
 import Header from './Header';
 import Players from './Players/Players';
+import SignUpPage from './SignUp';
 
 import '../App.css';
 
@@ -11,7 +12,7 @@ const App = () => (
     <div>
       <Header />
 
-      <Route exact path="/" />
+      <Route exact path="/" component={SignUpPage}/>
       <Route exact path="team" />
       <Route exact path="/players" component={Players} />
     </div>

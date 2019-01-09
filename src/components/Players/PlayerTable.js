@@ -23,7 +23,7 @@ class PlayerTable extends Component {
           title="Player"
           dataIndex="player"
           key="player"
-          render={ (name) => name.FirstName + ' ' + name.LastName}
+          render={ (name, record) => name.FirstName + ' ' + name.LastName + ' - ' + record.player.Position}
         />
         <ColumnGroup title="Passing">
           <Column
