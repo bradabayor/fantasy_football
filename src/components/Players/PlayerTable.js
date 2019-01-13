@@ -1,29 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Table, Col } from 'antd';
+import { Table } from "semantic-ui-react";
 
-import '../../App.css';
+import "../../App.css";
 
 const { Column, ColumnGroup } = Table;
 
 class PlayerTable extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {};
   }
 
-  
-
   render() {
     return (
-      <Table size="small" dataSource={this.props.players} pagination={{ pageSize : 30 }}>
+      <Table
+        size="small"
+        dataSource={this.props.players}
+        pagination={{ pageSize: 30 }}
+      >
         <Column
           title="Player"
           dataIndex="player"
           key="player"
-          render={ (name, record) => name.FirstName + ' ' + name.LastName + ' - ' + record.player.Position}
+          render={(name, record) =>
+            name.FirstName +
+            " " +
+            name.LastName +
+            " - " +
+            record.player.Position
+          }
         />
         <ColumnGroup title="Passing">
           <Column
@@ -31,11 +38,7 @@ class PlayerTable extends Component {
             dataIndex="stats.PassYards['#text']"
             key="passYards"
           />
-          <Column
-            title="TD"
-            dataIndex="stats.PassTD['#text']"
-            key="passTD"
-          />
+          <Column title="TD" dataIndex="stats.PassTD['#text']" key="passTD" />
           <Column
             title="Int"
             dataIndex="stats.PassInt['#text']"
@@ -48,11 +51,7 @@ class PlayerTable extends Component {
             dataIndex="stats.RushYards['#text']"
             key="rushYards"
           />
-          <Column
-            title="TD"
-            dataIndex="stats.RushTD['#text']"
-            key="rushTD"
-          />
+          <Column title="TD" dataIndex="stats.RushTD['#text']" key="rushTD" />
         </ColumnGroup>
         <ColumnGroup title="Receiving">
           <Column
@@ -60,11 +59,7 @@ class PlayerTable extends Component {
             dataIndex="stats.RecYards['#text']"
             key="recYards"
           />
-          <Column
-            title="TD"
-            dataIndex="stats.RecTD['#text']"
-            key="recTD"
-          />
+          <Column title="TD" dataIndex="stats.RecTD['#text']" key="recTD" />
         </ColumnGroup>
         <ColumnGroup title="Misc">
           <Column
@@ -88,7 +83,7 @@ class PlayerTable extends Component {
           />
         </ColumnGroup>
       </Table>
-    )
+    );
   }
 }
 

@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Button, Input } from 'antd';
+import { Button, Input } from "semantic-ui-react";
 
-import '../../App.css';
+import "../../App.css";
 
 const PositionButtonGroup = Button.Group;
 const Search = Input.Search;
 
 class PlayerSearchBar extends Component {
+  state = { activePosition: "All" };
 
-  state = { activePosition : 'All' };
-
-  handleClick = (e) => {
-    this.setState({ activePosition : e.target.name }, () => {this.props.getPlayers(this.state.activePosition)});
+  handleClick = e => {
+    this.setState({ activePosition: e.target.name }, () => {
+      this.props.getPlayers(this.state.activePosition);
+    });
   };
 
   render() {
-    const { activePosition } = this.state
+    const { activePosition } = this.state;
 
     return (
       <div>
@@ -26,43 +27,43 @@ class PlayerSearchBar extends Component {
             active={activePosition === "All"}
             onClick={this.handleClick}
           >
-          All
+            All
           </Button>
           <Button
             name="QB"
             active={activePosition === "QB"}
             onClick={this.handleClick}
           >
-          QB
+            QB
           </Button>
           <Button
             name="RB"
             active={activePosition === "RB"}
             onClick={this.handleClick}
           >
-          RB
+            RB
           </Button>
           <Button
             name="WR"
             active={activePosition === "WR"}
             onClick={this.handleClick}
           >
-          WR
+            WR
           </Button>
           <Button
             name="TE"
             active={activePosition === "TE"}
             onClick={this.handleClick}
           >
-          TE
+            TE
           </Button>
           <Button
             name="K"
             active={activePosition === "K"}
             onClick={this.handleClick}
           >
-          K
-          </Button> 
+            K
+          </Button>
         </PositionButtonGroup>
         <Search
           placeholder="Search Players..."
@@ -70,7 +71,7 @@ class PlayerSearchBar extends Component {
           style={{ width: 200 }}
         />
       </div>
-    )
+    );
   }
 }
 

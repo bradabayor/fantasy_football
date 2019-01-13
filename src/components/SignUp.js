@@ -1,33 +1,41 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
-import { withFirebase } from './Firebase';
+import { withFirebase } from "./Firebase";
 
-import { Form, Button, Grid, Header, Segment, Icon, Message } from 'semantic-ui-react';
-import { EventEmitter } from 'events';
+import {
+  Form,
+  Button,
+  Grid,
+  Header,
+  Segment,
+  Icon,
+  Message
+} from "semantic-ui-react";
 
-import LandingHeader from './LandingHeader';
-
-import '../App.css';
+import "../App.css";
 
 const INITAL_STATE = {
-  username : '',
-  email : '',
-  passwordOne : '',
-  passwordTwo : '',
-  error : null
+  username: "",
+  email: "",
+  passwordOne: "",
+  passwordTwo: "",
+  error: null
 };
 
 const SignUpPage = () => (
   <div>
-    <LandingHeader />
-    <div style={{ marginTop : 50 }}>
-      <Grid verticalAlign="middle" textAlign="center" className="ui middle aligned center aligned grid">
-          <Grid.Column style={{ maxWidth : 450 }}>
-            <Icon name="football ball" size="huge" color="pink"></Icon>
-            <Header as="h1">Sign Up</Header>
-            <SignUpForm />
-          </Grid.Column>
+    <div style={{ marginTop: 50 }}>
+      <Grid
+        verticalAlign="middle"
+        textAlign="center"
+        className="ui middle aligned center aligned grid"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Icon name="football ball" size="huge" color="red" />
+          <Header as="h1">Sign Up</Header>
+          <SignUpForm />
+        </Grid.Column>
       </Grid>
     </div>
   </div>
@@ -38,12 +46,12 @@ class SignUpFormBase extends Component {
     super(props);
 
     this.state = { ...INITAL_STATE };
-  };
+  }
 
   onSubmit = event => {
     event.preventDefault();
 
-    const { username, email, passwordOne } = this.state;
+    const { email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -57,28 +65,22 @@ class SignUpFormBase extends Component {
   };
 
   onChange = event => {
-    this.setState({ [event.target.name] : event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
-    const {
-      username,
-      email,
-      passwordOne,
-      passwordTwo,
-      error,
-    } = this.state;
+    const { username, email, passwordOne, passwordTwo, error } = this.state;
 
-    const IsInvalid = 
+    const IsInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+      passwordOne === "" ||
+      email === "" ||
+      username === "";
 
     return (
       <div>
         <Form size="large" autoComplete="off" onSubmit={this.onSubmit}>
-          <Segment style={{ Width : 450 }}>
+          <Segment style={{ Width: 450 }}>
             <Form.Input
               name="username"
               value={username}
@@ -99,7 +101,6 @@ class SignUpFormBase extends Component {
               name="passwordOne"
               value={passwordOne}
               onChange={this.onChange}
-              type="text"
               placeholder="Password"
               fluid
               type="password"
@@ -108,32 +109,25 @@ class SignUpFormBase extends Component {
               name="passwordTwo"
               value={passwordTwo}
               onChange={this.onChange}
-              type="text"
               placeholder="Confirm Password"
               fluid
               type="password"
             />
-            <Button
-              fluid
-              color="pink"
-              type="submit"
-              disabled={IsInvalid}
-            >
-            Sign Up
+            <Button fluid color="red" type="submit" disabled={IsInvalid}>
+              Sign Up
             </Button>
-
-            
           </Segment>
         </Form>
-        {error && 
+        {error && (
           <Message
             error
             header="Uh Oh..."
             content={error.message}
-            style={{ maxWidth : 450 }}
-          />}
+            style={{ maxWidth: 450 }}
+          />
+        )}
       </div>
-    )
+    );
   }
 }
 

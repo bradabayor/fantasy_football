@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Icon } from 'antd';
+import { Icon } from "semantic-ui-react";
 
-import PlayerTable from './PlayerTable';
-import PlayerSearchBar from './PlayerSearchBar';
+import PlayerTable from "./PlayerTable";
+import PlayerSearchBar from "./PlayerSearchBar";
 
-import { calculateFantasyPoints } from '../helpers/helpers';
+import { calculateFantasyPoints } from "../helpers/helpers";
 
-import '../../App.css';
+import "../../App.css";
 
-const API = require('../../utils/Msp');
+const API = require("../../utils/Msp");
 
 class Players extends Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
-      players: null,
-    }
+      players: null
+    };
 
     this.handleChangePosition = this.handleChangePosition.bind(this);
     this.getPlayers = this.getPlayers.bind(this);
@@ -27,55 +27,59 @@ class Players extends Component {
   }
 
   getPlayers(position) {
-    this.setState({ players : null });
+    this.setState({ players: null });
 
-    API.fetchCumulativePlayerStats(position)
-    .then(function(players) {
-      this.setState(function() {
-        return {
-          players : players,
-        }
-      }, () => this.appendFantasyPoints())
-    }.bind(this));
+    API.fetchCumulativePlayerStats(position).then(
+      function(players) {
+        this.setState(
+          function() {
+            return {
+              players: players
+            };
+          },
+          () => this.appendFantasyPoints()
+        );
+      }.bind(this)
+    );
   }
 
   appendFantasyPoints() {
     let players = this.state.players;
 
-    players.map( (player) => {
+    players.map(player => {
       player.fantasyPoints = calculateFantasyPoints(player);
-    })
+    });
 
-    players.sort( (a, b) => {
+    players.sort((a, b) => {
       let pointsA = a.fantasyPoints;
       let pointsB = b.fantasyPoints;
       return pointsB - pointsA;
-    })
-    
-    this.setState({ players : players });
+    });
+
+    this.setState({ players: players });
   }
 
   handleChangePosition(event, data) {
     console.log(data.value);
     this.setState(function() {
       return {
-        selected : data.value
-      }
+        selected: data.value
+      };
     });
   }
 
   updateSelectedPlayer(firstname, lastname, ID) {
-    let fullname = (firstname + '-' + lastname + '-' + ID).toLowerCase();
+    let fullname = (firstname + "-" + lastname + "-" + ID).toLowerCase();
     this.setState(function() {
       return {
-        selectedPlayer : fullname
-      }
-    })
+        selectedPlayer: fullname
+      };
+    });
   }
 
   handlePageChange(event, data) {
     let activePage = data.activePage;
-    let playerRange = [0, 20]
+    let playerRange = [0, 20];
 
     if (activePage !== 1) {
       playerRange[1] = activePage * 20;
@@ -86,17 +90,23 @@ class Players extends Component {
 
     this.createTableData();
 
-    this.setState({ playersOnPage : this.state.players.slice(playerRange[0], playerRange[1])})
+    this.setState({
+      playersOnPage: this.state.players.slice(playerRange[0], playerRange[1])
+    });
   }
 
   render() {
     return (
       <div className="container">
-        <PlayerSearchBar getPlayers={this.getPlayers}/>
-        {!this.state.players ?
-          <Icon type="loading" /> :
-          <PlayerTable players={this.state.players} updateSelectedPlayer={this.updateSelectedPlayer}/>
-        }
+        <PlayerSearchBar getPlayers={this.getPlayers} />
+        {!this.state.players ? (
+          <Icon type="loading" />
+        ) : (
+          <PlayerTable
+            players={this.state.players}
+            updateSelectedPlayer={this.updateSelectedPlayer}
+          />
+        )}
       </div>
     );
   }

@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Pagination } from 'semantic-ui-react';
+import { Pagination } from "semantic-ui-react";
 
 class PaginationComp extends Component {
-
   render() {
     return (
       <Pagination
@@ -12,7 +11,7 @@ class PaginationComp extends Component {
         siblingRange={1}
         totalPages={10}
       />
-    )
+    );
   }
 }
 
