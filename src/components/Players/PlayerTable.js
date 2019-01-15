@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 
-import { Table } from "semantic-ui-react";
-
 import "../../App.css";
-
-const { Column, ColumnGroup } = Table;
+import PlayerRow from "./PlayerRow";
 
 class PlayerTable extends Component {
   constructor(props) {
@@ -14,76 +11,43 @@ class PlayerTable extends Component {
   }
 
   render() {
-    return (
-      <Table
-        size="small"
-        dataSource={this.props.players}
-        pagination={{ pageSize: 30 }}
-      >
-        <Column
-          title="Player"
-          dataIndex="player"
-          key="player"
-          render={(name, record) =>
-            name.FirstName +
-            " " +
-            name.LastName +
-            " - " +
-            record.player.Position
-          }
-        />
-        <ColumnGroup title="Passing">
-          <Column
-            title="Yards"
-            dataIndex="stats.PassYards['#text']"
-            key="passYards"
-          />
-          <Column title="TD" dataIndex="stats.PassTD['#text']" key="passTD" />
-          <Column
-            title="Int"
-            dataIndex="stats.PassInt['#text']"
-            key="passInt"
-          />
-        </ColumnGroup>
-        <ColumnGroup title="Rushing">
-          <Column
-            title="Yards"
-            dataIndex="stats.RushYards['#text']"
-            key="rushYards"
-          />
-          <Column title="TD" dataIndex="stats.RushTD['#text']" key="rushTD" />
-        </ColumnGroup>
-        <ColumnGroup title="Receiving">
-          <Column
-            title="Yards"
-            dataIndex="stats.RecYards['#text']"
-            key="recYards"
-          />
-          <Column title="TD" dataIndex="stats.RecTD['#text']" key="recTD" />
-        </ColumnGroup>
-        <ColumnGroup title="Misc">
-          <Column
-            title="Fum Lost"
-            dataIndex="stats.FumLost['#text']"
-            key="fumLost"
-          />
-          <Column
-            title="2PT"
-            dataIndex="stats.TwoPtPassRec['#text']"
-            key="2PT"
-          />
-        </ColumnGroup>
-        <ColumnGroup>
-          <Column
-            title="points"
-            dataIndex="fantasyPoints"
-            key="fantasyPoints"
-            defaultSortOrder="descend"
-            className="player-table-points"
-          />
-        </ColumnGroup>
-      </Table>
-    );
+    if (this.props.players) {
+      var playersToShow = this.props.players.slice(0, 20);
+
+      return (
+        <div className="player-table-container">
+          <table className="player-table">
+            <tr>
+              <th style={{ width: "50px" }}>Action</th>
+              <th>Player</th>
+              <th>Status</th>
+              <th colspan="3">Passing</th>
+              <th colspan="2">Rushing</th>
+              <th colspan="2">Receiving</th>
+              <th colspan="2">Miscellaneous</th>
+              <th>Points</th>
+            </tr>
+            <tr>
+              <th />
+              <th />
+              <th />
+              <th>Yards</th>
+              <th>TD</th>
+              <th>Int</th>
+              <th>Yards</th>
+              <th>TD</th>
+              <th>Yards</th>
+              <th>TD</th>
+              <th>Fum</th>
+              <th>2PT</th>
+            </tr>
+            {playersToShow.map(player => {
+              return <PlayerRow player={player} team={player.team} />;
+            })}
+          </table>
+        </div>
+      );
+    }
   }
 }
 

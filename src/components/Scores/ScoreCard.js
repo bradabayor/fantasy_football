@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { Card } from 'semantic-ui-react';
-
 var 
 
 class Scores extends Component {

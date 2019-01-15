@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
 import "../../App.css";
 
 const API = require("../../utils/Msp");

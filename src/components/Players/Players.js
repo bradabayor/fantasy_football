@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 
-import { Icon } from "semantic-ui-react";
-
 import PlayerTable from "./PlayerTable";
 import PlayerSearchBar from "./PlayerSearchBar";
+import AppLoader from "../../utils/AppLoader";
 
 import { calculateFantasyPoints } from "../helpers/helpers";
 
@@ -43,11 +42,20 @@ class Players extends Component {
     );
   }
 
+  componentDidMount() {
+    this.getPlayers("QB");
+  }
+
   appendFantasyPoints() {
     let players = this.state.players;
 
     players.map(player => {
       player.fantasyPoints = calculateFantasyPoints(player);
+      if (player.team !== null) {
+        player.team = player.team.Abbreviation;
+      } else {
+        player.team = "FA";
+      }
     });
 
     players.sort((a, b) => {
@@ -97,15 +105,12 @@ class Players extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="players-container">
         <PlayerSearchBar getPlayers={this.getPlayers} />
-        {!this.state.players ? (
-          <Icon type="loading" />
+        {this.state.players ? (
+          <PlayerTable players={this.state.players} className="player-loader" />
         ) : (
-          <PlayerTable
-            players={this.state.players}
-            updateSelectedPlayer={this.updateSelectedPlayer}
-          />
+          <AppLoader className="players-loader" />
         )}
       </div>
     );

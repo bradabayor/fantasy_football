@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getRedditFeed } from "../../utils/Reddit";
 import reddit_logo from "../../images/reddit_logo.svg";
+import AppLoader from "../../utils/AppLoader";
 
 function RedditPost(props) {
   var post = props.post.data;
@@ -44,7 +45,12 @@ class RedditFeed extends Component {
   render() {
     return (
       <div className="reddit-posts">
-        {!this.state.posts ? null : <RedditPosts posts={this.state.posts} />}
+        <p style={{ fontWeight: "bold", color: "gray" }}>Reddit</p>
+        {!this.state.posts ? (
+          <AppLoader />
+        ) : (
+          <RedditPosts posts={this.state.posts} />
+        )}
       </div>
     );
   }

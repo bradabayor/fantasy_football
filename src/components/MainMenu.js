@@ -1,37 +1,33 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-import { Icon } from "semantic-ui-react";
-
 import * as ROUTES from "../constants/routes";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "../App.css";
 
 class MainMenu extends Component {
   render() {
     return (
       <div className="mainmenu-container">
         <NavLink exact to={ROUTES.HOME} className="mainmenu-element">
-          <Icon name="home" />
-          Home
+          <FontAwesomeIcon icon="home" color="#ea243e" size="1x" />
         </NavLink>
         <NavLink exact to={ROUTES.TEAM} className="mainmenu-element">
-          <Icon name="clipboard list" />
-          Team
+          <FontAwesomeIcon icon="sitemap" color="#ea243e" size="1x" />
         </NavLink>
         <NavLink exact to={ROUTES.LEAGUE} className="mainmenu-element">
-          <Icon name="trophy" />
-          League
+          <FontAwesomeIcon icon="trophy" color="#ea243e" size="1x" />
         </NavLink>
         <NavLink exact to={ROUTES.PLAYERS} className="mainmenu-element">
-          <Icon name="users" />
-          Players
+          <FontAwesomeIcon icon="home" color="#ea243e" size="1x" />
         </NavLink>
         <NavLink exact to={ROUTES.SCORES} className="mainmenu-element">
-          <Icon name="football ball" />
-          Scores
+          <FontAwesomeIcon icon="home" color="#ea243e" size="1x" />
         </NavLink>
         <NavLink exact to={ROUTES.ACCOUNT} className="mainmenu-element">
-          <Icon name="user" />
-          Account
+          <FontAwesomeIcon icon="home" color="#ea243e" size="1x" />
         </NavLink>
       </div>
     );

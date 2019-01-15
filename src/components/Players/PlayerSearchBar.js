@@ -1,76 +1,85 @@
 import React, { Component } from "react";
 
-import { Button, Input } from "semantic-ui-react";
-
 import "../../App.css";
 
-const PositionButtonGroup = Button.Group;
-const Search = Input.Search;
-
 class PlayerSearchBar extends Component {
-  state = { activePosition: "All" };
+  constructor(props) {
+    super(props);
+
+    this.state = { activePosition: "QB" };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   handleClick = e => {
-    this.setState({ activePosition: e.target.name }, () => {
-      this.props.getPlayers(this.state.activePosition);
-    });
+    this.setState({ activePosition: e.target.value }, () => {});
+    this.props.getPlayers(e.target.value);
   };
 
   render() {
     const { activePosition } = this.state;
 
     return (
-      <div>
-        <PositionButtonGroup>
-          <Button
-            name="All"
-            active={activePosition === "All"}
-            onClick={this.handleClick}
-          >
-            All
-          </Button>
-          <Button
-            name="QB"
-            active={activePosition === "QB"}
-            onClick={this.handleClick}
-          >
-            QB
-          </Button>
-          <Button
-            name="RB"
-            active={activePosition === "RB"}
-            onClick={this.handleClick}
-          >
-            RB
-          </Button>
-          <Button
-            name="WR"
-            active={activePosition === "WR"}
-            onClick={this.handleClick}
-          >
-            WR
-          </Button>
-          <Button
-            name="TE"
-            active={activePosition === "TE"}
-            onClick={this.handleClick}
-          >
-            TE
-          </Button>
-          <Button
-            name="K"
-            active={activePosition === "K"}
-            onClick={this.handleClick}
-          >
-            K
-          </Button>
-        </PositionButtonGroup>
-        <Search
-          placeholder="Search Players..."
-          onSearch={value => console.log(value)}
-          style={{ width: 200 }}
-        />
-      </div>
+      <span className="player-search-container">
+        <button
+          value="QB"
+          onClick={this.handleClick}
+          className={
+            this.state.activePosition === "QB"
+              ? "player-search-button player-search-button-active"
+              : "player-search-button"
+          }
+        >
+          QB
+        </button>
+        <button
+          active
+          value="RB"
+          onClick={this.handleClick}
+          className={
+            this.state.activePosition === "RB"
+              ? "player-search-button player-search-button-active"
+              : "player-search-button"
+          }
+        >
+          RB
+        </button>
+        <button
+          value="WR"
+          onClick={this.handleClick}
+          className={
+            this.state.activePosition === "WR"
+              ? "player-search-button player-search-button-active"
+              : "player-search-button"
+          }
+        >
+          WR
+        </button>
+        <button
+          value="TE"
+          onClick={this.handleClick}
+          className={
+            this.state.activePosition === "TE"
+              ? "player-search-button player-search-button-active"
+              : "player-search-button"
+          }
+        >
+          TE
+        </button>
+        <button
+          value="K"
+          onClick={this.handleClick}
+          className={
+            this.state.activePosition === "K"
+              ? "player-search-button player-search-button-active"
+              : "player-search-button"
+          }
+        >
+          K
+        </button>
+
+        <input placeholder="Search..." style={{ float: "right" }} />
+      </span>
     );
   }
 }

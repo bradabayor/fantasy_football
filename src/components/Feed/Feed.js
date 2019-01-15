@@ -1,8 +1,6 @@
 {
   /*import React, { Component } from "react";
 
-import { Feed, Icon } from "semantic-ui-react";
-
 const API = require("../../utils/Msp");
 
 const CumPlayerStatsPost = post => (

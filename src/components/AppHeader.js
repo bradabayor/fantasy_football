@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Grid, Header, Icon } from "semantic-ui-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../App.css";
 
@@ -9,8 +9,10 @@ class AppHeader extends Component {
     return (
       <div className="header-container">
         <div className="header-elements">
-          <Icon name="football ball" size="large" inverted />
-          <p style={{ color: "white", fontWeight: "bold" }}>Log In</p>
+          <FontAwesomeIcon icon="football-ball" color="white" size="2x" />
+          <p style={{ color: "white", fontWeight: "bold", fontSize: "12px" }}>
+            Log In
+          </p>
         </div>
       </div>
     );

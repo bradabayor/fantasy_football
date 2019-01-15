@@ -3,16 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 
 import { withFirebase } from "./Firebase";
 
-import {
-  Form,
-  Button,
-  Grid,
-  Header,
-  Segment,
-  Icon,
-  Message
-} from "semantic-ui-react";
-
 import "../App.css";
 
 const INITAL_STATE = {
