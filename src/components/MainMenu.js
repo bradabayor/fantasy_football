@@ -11,7 +11,7 @@ class MainMenu extends Component {
   render() {
     return (
       <div className="mainmenu-container">
-        <NavLink exact to={ROUTES.HOME} className="mainmenu-element">
+        <NavLink exact to={"/fantasy/home"} className="mainmenu-element">
           <FontAwesomeIcon icon="home" color="#ea243e" size="1x" />
         </NavLink>
         <NavLink exact to={ROUTES.TEAM} className="mainmenu-element">
@@ -20,7 +20,7 @@ class MainMenu extends Component {
         <NavLink exact to={ROUTES.LEAGUE} className="mainmenu-element">
           <FontAwesomeIcon icon="trophy" color="#ea243e" size="1x" />
         </NavLink>
-        <NavLink exact to={ROUTES.PLAYERS} className="mainmenu-element">
+        <NavLink exact to={"/fantasy/players"} className="mainmenu-element">
           <FontAwesomeIcon icon="home" color="#ea243e" size="1x" />
         </NavLink>
         <NavLink exact to={ROUTES.SCORES} className="mainmenu-element">

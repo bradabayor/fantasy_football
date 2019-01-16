@@ -12,7 +12,7 @@ class PlayerTable extends Component {
 
   render() {
     if (this.props.players) {
-      var playersToShow = this.props.players.slice(0, 20);
+      var playersToShow = this.props.players.slice(0, 18);
 
       return (
         <div className="player-table-container">
