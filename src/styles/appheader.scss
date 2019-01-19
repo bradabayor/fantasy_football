@@ -1,0 +1,18 @@
+@import "_colors";
+
+.app-header {
+  background-color: $background-color;
+
+  .app-header-elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 80px;
+    width: 1012px;
+    margin: auto;
+
+    color: white;
+  }
+}

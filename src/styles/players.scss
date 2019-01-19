@@ -1,0 +1,84 @@
+@import "_colors";
+@import "_mixins";
+
+.players-container {
+  @extend %ui-element-container;
+}
+
+.players-container-search {
+  @extend %ui-element-container;
+  justify-content: space-between;
+  padding: 10px;
+  height: 50px;
+
+  input {
+    height: 30px;
+    width: 200px;
+    margin-top: 10px;
+
+    color: $contrast-color;
+    background-color: $background-color;
+    outline: none;
+    border: 0;
+  }
+
+  button {
+    margin-top: 10px;
+    height: 30px;
+    width: 60px;
+
+    border: none;
+    background-color: $background-color;
+    color: $contrast-color;
+
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $hover-background;
+    }
+
+    &:focus {
+      outline: none !important;
+    }
+
+    &.active {
+      background-color: $green-contrast;
+      font-weight: bold;
+      outline: none;
+      color: $background-color;
+    }
+  }
+}
+
+.players-container-table {
+  @extend %ui-element-container;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.player-row {
+  display: grid;
+  grid-template-rows: 40px;
+  grid-template-columns: 35px 180px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 100%;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .plus-icon {
+    color: #00ff009a;
+  }
+}
+
+.spacer {
+  display: block;
+  min-height: 10px;
+  width: 100%;
+  background-color: $foreground-color;
+  clear: both;
+}

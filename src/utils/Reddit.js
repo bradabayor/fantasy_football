@@ -10,7 +10,6 @@ export function getRedditFeed(feedtype) {
       return res.json();
     })
     .then(function(data) {
-      console.log(data.data.children);
       return data.data.children;
     });
 }

@@ -1,0 +1,14 @@
+@import "_colors";
+@import "_mixins";
+
+.nav-container {
+  @extend %ui-element-container;
+  flex-direction: column;
+  text-align: center;
+  margin-right: 10px;
+
+  * {
+    transform: scale(1.05);
+    padding: 8px 0 8px 0;
+  }
+}

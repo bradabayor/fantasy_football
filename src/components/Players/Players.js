@@ -6,7 +6,7 @@ import AppLoader from "../../utils/AppLoader";
 
 import { calculateFantasyPoints } from "../helpers/helpers";
 
-import "../../App.css";
+import "../../styles/app.scss";
 
 const API = require("../../utils/Msp");
 
@@ -105,10 +105,10 @@ class Players extends Component {
 
   render() {
     return (
-      <div className="players-container">
+      <div>
         <PlayerSearchBar getPlayers={this.getPlayers} />
         {this.state.players ? (
-          <PlayerTable players={this.state.players} className="player-loader" />
+          <PlayerTable players={this.state.players} />
         ) : (
           <AppLoader className="players-loader" />
         )}

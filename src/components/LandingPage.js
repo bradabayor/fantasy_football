@@ -2,22 +2,20 @@ import React, { Component } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "../App.css";
+import "../styles/app.scss";
 import SignUpForm from "./SignUp";
 import SignInForm from "./SignIn";
+import AppHeader from "./AppHeader";
 
 class LandingPage extends Component {
+  componentDidMount() {
+    console.log(this.props.location.pathname);
+  }
+
   render() {
     return (
       <div className="landing-container">
-        <div className="landing-header-container">
-          <div className="header-elements">
-            <FontAwesomeIcon icon="football-ball" color="white" size="2x" />
-            <p style={{ color: "white", fontWeight: "bold", fontSize: "12px" }}>
-              Log In
-            </p>
-          </div>
-        </div>
+        <AppHeader path={this.props.location.pathname} />
         <SignInForm />
       </div>
     );

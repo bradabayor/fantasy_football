@@ -1,0 +1,11 @@
+@import "_colors";
+
+%ui-element-container {
+  display: flex;
+
+  padding: 20px;
+
+  background-color: $foreground-color;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 0.3em $foreground-color);
+}

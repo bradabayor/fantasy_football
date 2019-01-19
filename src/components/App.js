@@ -2,16 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, IndexRoute } from "react-router-dom";
 import { withFirebase } from "../components/Firebase";
 
-import Players from "./Players/Players";
-import APIFeed from "./Feed/Feed";
-import AppHeader from "./AppHeader";
-import Home from "./Home/Home";
-import MainMenu from "./MainMenu";
 import LandingPage from "./LandingPage";
 import FantasyFootball from "./FantasyFootball";
 
-import * as ROUTES from "../constants/routes";
-import "../App.css";
+import "../styles/app.scss";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,15 +24,18 @@ class App extends Component {
     super(props);
 
     this.state = {
-      authUser: null
+      authUser: null,
+      user: null
     };
   }
 
   componentDidMount() {
-    this.props.firebase.auth.onAuthStateChanged(authUser => {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState({ authUser })
         : this.setState({ authUser: null });
+
+      console.log(this.props.firebase.auth.currentUser.providerData[0].uid);
     });
   }
 
@@ -51,7 +48,12 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={LandingPage} />
-          <Route path="/fantasy" component={FantasyFootball} />
+          <Route
+            path="/fantasy"
+            render={props => (
+              <FantasyFootball {...props} authUser={this.state.authUser} />
+            )}
+          />
         </div>
       </Router>
     );

@@ -1,0 +1,36 @@
+// MAIN SCSS FILE
+
+// App Colors
+@import "_colors";
+
+// App Fonts
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700,800");
+
+// Component Stylesheets
+@import "reset";
+@import "appheader";
+@import "home";
+@import "navigation";
+@import "players";
+
+// App.js and FantasyFootball.js specific styles
+body {
+  background-color: $background-color;
+  overflow-y: scroll;
+  font-family: "Exo 2", sans-serif;
+  font-size: 18px;
+}
+
+.ff-container {
+  display: grid;
+  grid-template-columns: 85px 1fr;
+
+  width: 1024px;
+  margin: auto;
+}
+
+.landing-container {
+  height: 100vh;
+  width: 100%;
+}

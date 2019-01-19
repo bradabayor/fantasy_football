@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MainMenu from "./MainMenu";
 import * as ROUTES from "../constants/routes";
 import Players from "../components/Players/Players";
 import Home from "../components/Home/Home";
 
-import "../App.css";
+import "../styles/app.scss";
 import AppHeader from "./AppHeader";
+import Navigation from "./Navigation";
 
 class FantasyFootball extends Component {
   render() {
     return (
       <div>
-        <AppHeader />
-        <div className="app-container">
-          <MainMenu />
+        <AppHeader
+          path={this.props.location.pathname}
+          authUser={this.props.authUser}
+        />
+        <div className="ff-container">
+          <Navigation />
           <Route
             exact
             path={`${this.props.match.path}/home`}
