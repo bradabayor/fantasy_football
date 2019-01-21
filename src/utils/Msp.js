@@ -7,7 +7,6 @@ export function fetchCumulativePlayerStats(position) {
     url =
       "https://api.mysportsfeeds.com/v1.2/pull/nfl/2018-regular/cumulative_player_stats.json?";
   }
-  console.log(position);
   return fetch(url, {
     method: "GET",
     headers: {
@@ -20,8 +19,6 @@ export function fetchCumulativePlayerStats(position) {
       return res.json();
     })
     .then(function(data) {
-      console.log("API -> fetchCumulativePlayerStats -> Position: " + position);
-      console.log(data.cumulativeplayerstats.playerstatsentry);
       return data.cumulativeplayerstats.playerstatsentry;
     });
 }
@@ -43,8 +40,6 @@ export function fetchPlayerInfoByID(playerID) {
       return res.json();
     })
     .then(function(data) {
-      console.log("fetchPlayerInfoByID - COMPLETE");
-      console.log(data.activeplayers.playerentry[0]);
       return data.activeplayers.playerentry[0];
     });
 }
@@ -65,7 +60,6 @@ export function fetchFeedUpdates(playerID) {
       return res.json();
     })
     .then(function(data) {
-      console.log("fetchPlayerInfoByID - COMPLETE");
       return data.latestupdates.feedentry;
     });
 }

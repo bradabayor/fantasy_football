@@ -4,8 +4,12 @@
 .nav-container {
   @extend %ui-element-container;
   flex-direction: column;
+
   text-align: center;
   margin-right: 10px;
+  height: 100%;
+
+  background-color: $nav-background;
 
   * {
     transform: scale(1.05);

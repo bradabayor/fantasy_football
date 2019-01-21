@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import "../styles/app.scss";
-import SignUpForm from "./SignUp";
 import SignInForm from "./SignIn";
 import AppHeader from "./AppHeader";
 
@@ -14,9 +11,12 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div className="landing-container">
+      <div>
         <AppHeader path={this.props.location.pathname} />
-        <SignInForm />
+        <div className="landing-container">
+          <h1>"I love me some me" - Jerry Rice</h1>
+          <SignInForm />
+        </div>
       </div>
     );
   }

@@ -12,8 +12,10 @@ class PlayerSearchBar extends Component {
   }
 
   handleClick = e => {
-    this.setState({ activePosition: e.target.value }, () => {});
-    this.props.getPlayers(e.target.value);
+    this.setState(
+      { activePosition: e.target.value },
+      this.props.getPlayers(e.target.value)
+    );
   };
 
   render() {
@@ -25,22 +27,21 @@ class PlayerSearchBar extends Component {
           <button
             value="QB"
             onClick={this.handleClick}
-            className={this.state.activePosition === "QB" ? "active" : null}
+            className={activePosition === "QB" ? "active" : " "}
           >
             QB
           </button>
           <button
-            active
             value="RB"
             onClick={this.handleClick}
-            className={this.state.activePosition === "RB" ? "active" : null}
+            className={activePosition === "RB" ? "active" : " "}
           >
             RB
           </button>
           <button
             value="WR"
             onClick={this.handleClick}
-            className={this.state.activePosition === "WR" ? "active" : null}
+            className={activePosition === "WR" ? "active" : " "}
           >
             WR
           </button>
@@ -48,7 +49,7 @@ class PlayerSearchBar extends Component {
             value="TE"
             onClick={this.handleClick}
             className={
-              this.state.activePosition === "TE"
+              activePosition === "TE"
                 ? "player-search-button player-search-button-active"
                 : "player-search-button"
             }
@@ -59,7 +60,7 @@ class PlayerSearchBar extends Component {
             value="K"
             onClick={this.handleClick}
             className={
-              this.state.activePosition === "K"
+              activePosition === "K"
                 ? "player-search-button player-search-button-active"
                 : "player-search-button"
             }
@@ -67,7 +68,7 @@ class PlayerSearchBar extends Component {
             K
           </button>
         </div>
-        <input placeholder="Search..." style={{ float: "right" }} />
+        <input placeholder="Search..." />
       </span>
     );
   }

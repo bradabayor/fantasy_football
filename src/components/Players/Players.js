@@ -51,11 +51,7 @@ class Players extends Component {
 
     players.map(player => {
       player.fantasyPoints = calculateFantasyPoints(player);
-      if (player.team !== null) {
-        player.team = player.team.Abbreviation;
-      } else {
-        player.team = "FA";
-      }
+      return null;
     });
 
     players.sort((a, b) => {
@@ -106,6 +102,7 @@ class Players extends Component {
   render() {
     return (
       <div>
+        <h1 className="players-h1">PLAYERS</h1>
         <PlayerSearchBar getPlayers={this.getPlayers} />
         {this.state.players ? (
           <PlayerTable players={this.state.players} />

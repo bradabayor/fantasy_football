@@ -4,46 +4,44 @@
 
 // Modules
 import React, { Component } from "react";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Stylesheets
 import "../../styles/app.scss";
-
-// Constants
-import * as COLORS from "../../constants/teamColors";
-
-// Styled Components
-
-const NameTag = styled.div`
-  backgroundd-color: ${props => {
-    if (props.team === null) {
-      return "none";
-    } else if (props.team === undefined) {
-      return "none";
-    } else if (props.hasOwnProperty["team"]) {
-      return COLORS[props.team].PRIMARY;
-    }
-  }};
-`;
 
 // Class Component
 class PlayerRow extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      playerId: this.props.player.player.ID
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.handleClick(this.props.player.player.ID);
   }
 
   render() {
     return (
-      <div>
+      <div onClick={this.handleClick}>
         <div className="player-row">
-          <div style={{ cursor: "pointer" }}>
-            <FontAwesomeIcon className="plus-icon" icon="plus" />
+          <div className="player-row-position">
+            {this.props.player.player.Position}
           </div>
-          <div>
-            <NameTag team={this.props.team}>{`${
-              this.props.player.player.FirstName
-            } ${this.props.player.player.LastName}`}</NameTag>
+          <div className="player-row-nametag">
+            <p className="name">
+              {`${this.props.player.player.FirstName} ${
+                this.props.player.player.LastName
+              }`}
+            </p>
+            <p>
+              {this.props.player.team
+                ? this.props.player.team.Abbreviation
+                : null}
+            </p>
           </div>
           <div>-</div>
           <div>
@@ -97,7 +95,6 @@ class PlayerRow extends Component {
               : this.props.player.fantasyPoints}
           </div>
         </div>
-        <div className="spacer" />
       </div>
     );
   }

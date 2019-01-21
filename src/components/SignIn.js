@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import { withFirebase } from "./Firebase";
 
-import "../App.css";
+import "../styles/app.scss";
 
 const INITAL_STATE = {
   email: "",
@@ -27,7 +27,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(authUser => {
         this.setState({ ...INITAL_STATE });
-        this.props.history.push("/fantasy/home");
+        this.props.history.push("/fantasy/players");
       })
       .catch(error => {
         this.setState({ error });
@@ -44,31 +44,30 @@ class SignInFormBase extends Component {
     const IsInvalid = password === "" || email === "";
 
     return (
-      <div className="signup-container">
-        <h1>Log In</h1>
+      <div className="sign-in-container">
         <form size="large" autoComplete="off" onSubmit={this.onSubmit}>
+          <label>Username</label>
           <input
             className="signup-input"
             name="email"
             value={email}
             onChange={this.onChange}
             type="text"
-            placeholder="Email"
             fluid
           />
+          <label>Password</label>
           <input
             className="signup-input"
             name="password"
             value={password}
             onChange={this.onChange}
-            placeholder="Password"
             fluid
             type="password"
           />
           <button className="signup-button" type="submit" disabled={IsInvalid}>
             Log In
           </button>
-          {error && <p>{error.message}</p>}
+          {error && <p className="sign-in-error">{error.message}</p>}
         </form>
       </div>
     );

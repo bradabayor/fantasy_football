@@ -5,18 +5,23 @@
   @extend %ui-element-container;
 }
 
+.players-h1 {
+  margin-left: 20px;
+}
+
 .players-container-search {
   @extend %ui-element-container;
   justify-content: space-between;
   padding: 10px;
   height: 50px;
+  margin-left: 20px;
 
   input {
     height: 30px;
     width: 200px;
     margin-top: 10px;
 
-    color: $contrast-color;
+    color: $green-contrast;
     background-color: $background-color;
     outline: none;
     border: 0;
@@ -29,7 +34,7 @@
 
     border: none;
     background-color: $background-color;
-    color: $contrast-color;
+    color: $green-contrast;
 
     transition: background-color 0.3s ease;
 
@@ -51,17 +56,43 @@
 }
 
 .players-container-table {
-  @extend %ui-element-container;
+  display: flex;
   flex-direction: column;
+
+  position: relative;
   height: 100%;
-  margin-top: 10px;
+  margin: 30px;
+
+  .players-table-titles {
+    display: grid;
+    grid-template-rows: 30px;
+    grid-template-columns: 60px 200px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: $nav-background;
+      color: darkgray;
+    }
+  }
 }
 
 .player-row {
   display: grid;
-  grid-template-rows: 40px;
-  grid-template-columns: 35px 180px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 60px;
+  grid-template-columns: 60px 200px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
   width: 100%;
+
+  font-size: 16px;
+  background-color: $foreground-color;
+  border-left: 3px solid $nav-background;
 
   div {
     display: flex;
@@ -73,12 +104,82 @@
   .plus-icon {
     color: #00ff009a;
   }
+
+  .player-row-position {
+    background-color: $nav-background;
+    color: darkgray;
+  }
+
+  &:hover {
+    border-left: 3px solid red;
+  }
+}
+
+.player-row-nametag {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+
+  p {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .name {
+    color: $green-contrast;
+    font-weight: bold;
+    font-size: 16px;
+  }
 }
 
 .spacer {
-  display: block;
   min-height: 10px;
   width: 100%;
-  background-color: $foreground-color;
+  background-color: $background-color;
   clear: both;
+}
+
+.player-detail-overlay {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  left: 0;
+  right: 0;
+  margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: $background-color;
+  filter: drop-shadow(0 0 2em black);
+
+  h2 {
+    width: 100%;
+    color: darkgray !important;
+  }
+
+  .player-detail-banner {
+    display: inline-block;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 0;
+
+    background-color: $green-contrast;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  .player-detail-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 50px 200px;
+
+    width: 100%;
+    height: 570px;
+    margin: 0;
+  }
 }

@@ -6,6 +6,7 @@
 // App Fonts
 
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700,800");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700");
 
 // Component Stylesheets
 @import "reset";
@@ -13,20 +14,24 @@
 @import "home";
 @import "navigation";
 @import "players";
+@import "landingpage";
 
 // App.js and FantasyFootball.js specific styles
 body {
   background-color: $background-color;
   overflow-y: scroll;
-  font-family: "Exo 2", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 18px;
+}
+
+h1 {
+  color: darkgray;
+  font-weight: normal;
 }
 
 .ff-container {
   display: grid;
-  grid-template-columns: 85px 1fr;
-
-  width: 1024px;
+  grid-template-columns: 70px 1fr;
   margin: auto;
 }
 

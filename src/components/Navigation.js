@@ -4,8 +4,11 @@
 
 // Modules
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+//Authentication
+import { withAuthentication } from "./Session";
 
 // Stylesheets
 import "../styles/app.scss";
@@ -15,27 +18,50 @@ import * as ROUTES from "../constants/routes";
 
 // Component Class
 class Navigation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: null
+    };
+
+    this.doSignOut = this.doSignOut.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  doSignOut() {
+    this.props.firebase.doSignOut();
+    this.props.history.push("/");
+  }
+
+  handleChange() {}
+
   render() {
-    var icon_color = "#fad000";
+    var icon_color = "#83da7c";
 
     return (
       <div className="nav-container">
-        <NavLink exact to={"/fantasy/home"}>
+        <div>
+          {this.props.firebase.auth.currentUser ? (
+            <p onClick={this.doSignOut}>LO</p>
+          ) : null}
+        </div>
+        <NavLink exact to={"/fantasy/home"} onClick={this.handleChange}>
           <FontAwesomeIcon icon="home" color={icon_color} size="1x" />
         </NavLink>
-        <NavLink exact to={ROUTES.TEAM}>
+        <NavLink exact to={ROUTES.TEAM} onClick={this.handleChange}>
           <FontAwesomeIcon icon="sitemap" color={icon_color} size="1x" />
         </NavLink>
-        <NavLink exact to={ROUTES.LEAGUE}>
+        <NavLink exact to={ROUTES.LEAGUE} onClick={this.handleChange}>
           <FontAwesomeIcon icon="trophy" color={icon_color} size="1x" />
         </NavLink>
-        <NavLink exact to={"/fantasy/players"}>
+        <NavLink exact to={"/fantasy/players"} onClick={this.handleChange}>
           <FontAwesomeIcon icon="home" color={icon_color} size="1x" />
         </NavLink>
-        <NavLink exact to={ROUTES.SCORES}>
+        <NavLink exact to={ROUTES.SCORES} onClick={this.handleChange}>
           <FontAwesomeIcon icon="home" color={icon_color} size="1x" />
         </NavLink>
-        <NavLink exact to={ROUTES.ACCOUNT}>
+        <NavLink exact to={ROUTES.ACCOUNT} onClick={this.handleChange}>
           <FontAwesomeIcon icon="home" color={icon_color} size="1x" />
         </NavLink>
       </div>
@@ -43,4 +69,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default withRouter(withAuthentication(Navigation));

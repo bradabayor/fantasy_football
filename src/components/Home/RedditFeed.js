@@ -14,9 +14,7 @@ function RedditPost(props) {
         <img src={reddit_logo} alt="reddit_logo" />
       )}
       <div className="reddit-post-title">
-        <a href={link} target="_blank">
-          {post.title}
-        </a>
+        <a href={link}>{post.title}</a>
         <span>{post.subreddit_name_prefixed}</span>
       </div>
     </div>
@@ -27,6 +25,7 @@ function RedditPosts(props) {
   var postList = [];
   props.posts.map(post => {
     postList.push(<RedditPost post={post} />);
+    return null;
   });
   return postList;
 }
