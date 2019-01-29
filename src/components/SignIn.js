@@ -27,7 +27,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(authUser => {
         this.setState({ ...INITAL_STATE });
-        this.props.history.push("/fantasy/players");
+        this.props.history.push("/fantasy/home");
       })
       .catch(error => {
         this.setState({ error });
@@ -44,31 +44,36 @@ class SignInFormBase extends Component {
     const IsInvalid = password === "" || email === "";
 
     return (
-      <div className="sign-in-container">
-        <form size="large" autoComplete="off" onSubmit={this.onSubmit}>
-          <label>Username</label>
+      <div className="sign-in">
+        <h1>SIGN IN</h1>
+        <form
+          className="form"
+          size="large"
+          autoComplete="off"
+          onSubmit={this.onSubmit}
+        >
           <input
-            className="signup-input"
+            className="form__input"
             name="email"
             value={email}
             onChange={this.onChange}
             type="text"
-            fluid
+            placeholder="Username"
           />
-          <label>Password</label>
+
           <input
-            className="signup-input"
+            className="form__input"
             name="password"
             value={password}
             onChange={this.onChange}
-            fluid
             type="password"
+            placeholder="Password"
           />
-          <button className="signup-button" type="submit" disabled={IsInvalid}>
+          <button className="form__button" type="submit" disabled={IsInvalid}>
             Log In
           </button>
-          {error && <p className="sign-in-error">{error.message}</p>}
         </form>
+        {error && <p className="sign-in-error">{error.message}</p>}
       </div>
     );
   }

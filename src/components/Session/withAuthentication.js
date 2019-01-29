@@ -9,7 +9,8 @@ const withAuthentication = Component => {
       super(props);
 
       this.state = {
-        authUser: null
+        authUser: null,
+        selectedLeague: null
       };
     }
 
@@ -25,10 +26,18 @@ const withAuthentication = Component => {
       this.listener();
     }
 
+    handleLeagueChange = league => {
+      this.setState({ selectedLeague: league });
+    };
+
     render() {
       return (
         <AuthUserContext.Provider value={this.state.authUser}>
-          <Component {...this.props} authUser={this.state.authUser} />
+          <Component
+            {...this.props}
+            authUser={this.state.authUser}
+            handleLeagueChange={() => this.handleLeagueChange}
+          />
         </AuthUserContext.Provider>
       );
     }

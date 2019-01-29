@@ -1,18 +1,61 @@
 @import "_colors";
 
-.app-header {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 1012px;
+  height: 66px;
+  margin: auto;
+
   background-color: $background-color;
 
-  .app-header-elements {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .header__logo {
+    display: inline;
     align-items: center;
 
-    height: 80px;
-    width: 1012px;
-    margin: auto;
+    color: black;
 
-    color: white;
+    h1 {
+      font-weight: bold;
+      color: black;
+      font-size: 30px;
+      margin-left: 10px;
+    }
+
+    * {
+      display: inline;
+    }
+  }
+
+  .header__nav {
+    display: flex;
+    justify-content: space-between;
+
+    width: 200px;
+
+    .header__button {
+      outline: 0;
+      border: 0;
+      padding: 8px;
+      border-radius: 5px;
+
+      color: black;
+      background-color: white;
+      font-size: 16px;
+
+      cursor: pointer;
+    }
+
+    .button--secondary {
+      border: 1px solid black;
+    }
+
+    .button--no-border {
+      &:hover {
+        color: hsla(216, 100%, 66%, 1);
+      }
+    }
   }
 }

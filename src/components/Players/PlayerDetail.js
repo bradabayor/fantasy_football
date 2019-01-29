@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import "../../styles/app.scss";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppLoader from "../../utils/AppLoader";
 import { withAuthentication } from "../Session";
 
@@ -24,7 +23,12 @@ class PlayerDetail extends Component {
   }
 
   writeToDatabase() {
-    console.log("writing to database");
+    let name = `${this.state.player.player.FirstName}-${
+      this.state.player.player.LastName
+    }-${this.state.player.player.ID}`;
+
+    console.log(`${name}`);
+    console.log(this.props.firebase.auth.currentUser.email);
   }
 
   render() {
@@ -41,14 +45,13 @@ class PlayerDetail extends Component {
               {this.state.player.player.LastName}
             </h2>
             <button
-              onClick={this.writeToDatabase(this.state.player.player.FirstName)}
+              onClick={() => {
+                this.writeToDatabase();
+              }}
             >
               Add
             </button>
-            <img
-              src={this.state.player.player.officialImageSrc}
-              alt="player photo"
-            />
+            <img src={this.state.player.player.officialImageSrc} alt="player" />
           </div>
         ) : (
           <AppLoader />

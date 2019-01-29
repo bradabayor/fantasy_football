@@ -14,7 +14,6 @@ class LandingPage extends Component {
       <div>
         <AppHeader path={this.props.location.pathname} />
         <div className="landing-container">
-          <h1>"I love me some me" - Jerry Rice</h1>
           <SignInForm />
         </div>
       </div>

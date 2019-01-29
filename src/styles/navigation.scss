@@ -1,18 +1,33 @@
 @import "_colors";
 @import "_mixins";
 
-.nav-container {
-  @extend %ui-element-container;
-  flex-direction: column;
+.nav {
+  display: flex;
+  flex-direction: row;
 
   text-align: center;
-  margin-right: 10px;
-  height: 100%;
+  width: 100%;
+  height: 60px;
+  padding-left: 30px;
 
-  background-color: $nav-background;
+  background-color: $foreground-color;
 
-  * {
-    transform: scale(1.05);
-    padding: 8px 0 8px 0;
+  .nav__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 20px;
+
+    p {
+      font-size: 16px;
+      color: black;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+  }
+
+  .nav__icon {
+    width: 20px;
+    height: 20px;
   }
 }

@@ -22,7 +22,7 @@
     margin-top: 10px;
 
     color: $green-contrast;
-    background-color: $background-color;
+    background-color: white;
     outline: none;
     border: 0;
   }
@@ -78,7 +78,7 @@
       align-items: center;
 
       background-color: $nav-background;
-      color: darkgray;
+      color: rgb(253, 235, 235);
     }
   }
 }
@@ -89,16 +89,19 @@
   grid-template-columns: 60px 200px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
   width: 100%;
+  margin-bottom: 10px;
 
   font-size: 16px;
-  background-color: $foreground-color;
+  background-color: white;
   border-left: 3px solid $nav-background;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px hsla(0, 0%, 0%, 0.4);
 
   div {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: black;
   }
 
   .plus-icon {

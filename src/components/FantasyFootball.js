@@ -5,16 +5,17 @@ import Home from "../components/Home/Home";
 
 import "../styles/app.scss";
 import Navigation from "./Navigation";
+import AppHeader from "./AppHeader";
 import Team from "./Team/Team";
 
 class FantasyFootball extends Component {
   render() {
     return (
       <div>
-        {/*<AppHeader
+        <AppHeader
           path={this.props.location.pathname}
           authUser={this.props.authUser}
-        />*/}
+        />
         <div className="ff-container">
           <Navigation path={this.props.location.pathname} />
           <Route

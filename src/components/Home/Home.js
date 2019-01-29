@@ -10,21 +10,59 @@ import "../../styles/app.scss";
 
 // Referenced Components
 import RedditFeed from "./RedditFeed";
+import APIFeed from "../Feed/Feed";
 
 // Component Class
 class Home extends Component {
   render() {
     return (
-      <div className="home-container">
-        <div className="home-home-element" />
-        <div className="home-element">2</div>
-        <div className="home-element">3</div>
-        <div className="home-element">
-          <RedditFeed />
+      <section className="home">
+        <div className="element element-1">
+          <p>Player of the Week</p>
+          <p>PLAYER HERE</p>
+          <p className="home__link">Players</p>
         </div>
-        <div className="home-element">5</div>
-        <div className="home-element">6</div>
-      </div>
+        <div className="element element-2">
+          <p>My Team</p>
+          <p>Team</p>
+        </div>
+        <div className="element element-3">
+          <p>Feed</p>
+          <APIFeed />
+          <p className="home__link" />
+        </div>
+        <div className="element element-4">
+          <p>League Standings</p>
+          <p>STANDINGS</p>
+          <p className="home__link">Scores</p>
+        </div>
+        <div className="element element-5">
+          <p>Players</p>
+          <p>Players</p>
+        </div>
+        <div className="element element-6">
+          <p>Reddit</p>
+          <RedditFeed />
+          <p className="home__link">More Reddit</p>
+        </div>
+        <div className="element element-7">
+          <p>Account</p>
+          <p>My Account</p>
+        </div>
+        <div className="element element-8">
+          <p>Photos</p>
+        </div>
+        <div className="element element-9">
+          <p>Videos</p>
+        </div>
+        <div className="element element-10">
+          <p>NFL Scores</p>
+          <p>Scores</p>
+        </div>
+        <div className="element element-11">
+          <p>Activity</p>
+        </div>
+      </section>
     );
   }
 }

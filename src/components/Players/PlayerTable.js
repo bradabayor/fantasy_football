@@ -61,7 +61,6 @@ class PlayerTable extends Component {
                   team={player.team}
                   handleClick={this.handleClick}
                 />
-                <div className="spacer" />
               </div>
             );
           })}

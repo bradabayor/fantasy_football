@@ -1,34 +1,20 @@
 import React, { Component } from "react";
 import { getRedditFeed } from "../../utils/Reddit";
-import reddit_logo from "../../images/reddit_logo.svg";
-import AppLoader from "../../utils/AppLoader";
 
-function RedditPost(props) {
-  var post = props.post.data;
-  var link = "//www.reddit.com" + post.permalink;
-  return (
-    <div className="reddit-post">
-      {!post.thumbnail === "self" || !post.thumbnail === "default" ? (
-        <img src={post.thumbnail} alt="thumbnail" />
-      ) : (
-        <img src={reddit_logo} alt="reddit_logo" />
-      )}
-      <div className="reddit-post-title">
-        <a href={link}>{post.title}</a>
-        <span>{post.subreddit_name_prefixed}</span>
-      </div>
+import "../../styles/app.scss";
+
+const Post = post => (
+  <div className="reddit">
+    <div className="reddit__thumbnail-container">
+      <a href={123}>
+        <img className="reddit__thumbnail" src={123} alt="" />
+      </a>
     </div>
-  );
-}
-
-function RedditPosts(props) {
-  var postList = [];
-  props.posts.map(post => {
-    postList.push(<RedditPost post={post} />);
-    return null;
-  });
-  return postList;
-}
+    <h2 className="reddit__title">{123}</h2>
+    <p className="reddit__subreddit">{123}</p>
+    <p />
+  </div>
+);
 
 class RedditFeed extends Component {
   constructor(props) {
@@ -42,16 +28,7 @@ class RedditFeed extends Component {
   }
 
   render() {
-    return (
-      <div className="reddit-posts">
-        <p style={{ fontWeight: "bold", color: "gray" }}>Reddit</p>
-        {!this.state.posts ? (
-          <AppLoader />
-        ) : (
-          <RedditPosts posts={this.state.posts} />
-        )}
-      </div>
-    );
+    return <div>{this.state.posts && <Post post={this.state.posts[1]} />}</div>;
   }
 }
 
