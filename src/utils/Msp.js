@@ -15,12 +15,10 @@ export function fetchCumulativePlayerStats(position) {
       "Content-Type": "application/json; charset=UTF-8"
     }
   })
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(data) {
-      return data.cumulativeplayerstats.playerstatsentry;
-    });
+    //.then(function(res) { return res.json(); })
+    .then(res => res.text())
+    .then(text => console.log(text))
+    //.then(function(data) { return data.cumulativeplayerstats.playerstatsentry; });
 }
 
 export function fetchSinglePlayerStats(player) {

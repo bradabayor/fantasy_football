@@ -10,26 +10,26 @@ import "../constants/fontAwesome";
 import { withAuthentication } from "./Session";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      currentLeague: null
-    };
-  }
+		this.state = {
+			data: null
+		};
+	}
 
-  handleLeagueChange = () => {};
+	handleLeagueChange = () => {};
 
-  render() {
-    return (
-      <Router>
-        <div>
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/fantasy" component={FantasyFootball} />
-        </div>
-      </Router>
-    );
-  }
+	render() {
+		return (
+			<Router>
+				<div>
+					<Route exact path="/" component={LandingPage} />
+					<Route path="/fantasy" component={FantasyFootball} />
+				</div>
+			</Router>
+		);
+	}
 }
 
 export default withAuthentication(App);
