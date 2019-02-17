@@ -57,7 +57,10 @@ class Home extends Component {
 				<div className="element element-4">
 					<p>League Standings</p>
 					{this.state.users !== null ? (
-						<p>{this.state.users[0].email}</p>
+						<p>
+							{this.state.users[0].name} {this.state.users[0].email}{" "}
+							{this.state.users[0].username}
+						</p>
 					) : null}
 					<p className="home__link">Scores</p>
 				</div>

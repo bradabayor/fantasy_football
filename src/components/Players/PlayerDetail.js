@@ -13,22 +13,12 @@ class PlayerDetail extends Component {
 
     this.state = {};
 
-    this.writeToDatabase = this.writeToDatabase.bind(this);
   }
 
   componentDidMount() {
     API.fetchPlayerInfoByID(this.props.playerID).then(player => {
       this.setState({ player: player });
     });
-  }
-
-  writeToDatabase() {
-    let name = `${this.state.player.player.FirstName}-${
-      this.state.player.player.LastName
-    }-${this.state.player.player.ID}`;
-
-    console.log(`${name}`);
-    console.log(this.props.firebase.auth.currentUser.email);
   }
 
   render() {
