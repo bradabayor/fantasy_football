@@ -1,28 +1,21 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import injectTapEventPlugin from "react-tap-event-plugin";
 
-import LandingPage from "./LandingPage";
-import FantasyFootball from "./FantasyFootball";
-
-import "../styles/app.scss";
+//import "../styles/app.scss";
 import "../constants/fontAwesome";
 
-import { withAuthentication } from "./Session";
-import routes from "../routes";
-import Base from "./Base";
+import Base from "./containers/Base";
 
 class App extends Component {
-	render() {
-		return (
-			<Router>
-				<div>
-					<Route path="/" component={Base} />
-					<Route path="/fantasy" component={FantasyFootball} />
-				</div>
-			</Router>
-		);
-	}
+  render() {
+    return (
+      <Router>
+        <div style={{ width: "1024px", margin: "auto" }}>
+          <Route path="/" component={Base} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

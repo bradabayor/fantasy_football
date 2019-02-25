@@ -2,24 +2,14 @@
 
 // Modules
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
 
 //Styles
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import Typography from "@material-ui/core/Typography";
+
 import Fab from "@material-ui/core/Fab";
 import TextField from "@material-ui/core/TextField";
-import "../styles/app.scss";
-import CardContent from "@material-ui/core/CardContent";
-import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles({
-	container: {
-		width: "400px",
-		height: "600px"
-	}
-});
+import CardContent from "@material-ui/core/CardContent";
 
 class SignUpContainer extends Component {
 	constructor(props) {

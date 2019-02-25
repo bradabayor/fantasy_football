@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
-import "../../styles/app.scss";
 import PlayerRow from "./PlayerRow";
-import PlayerDetail from "./PlayerDetail";
+//import PlayerDetail from "./PlayerDetail";
 
 class PlayerTable extends Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class PlayerTable extends Component {
       var playerID = this.state.playerDetailID;
 
       var overlay = this.state.playerDetailID ? (
-        <PlayerDetail playerID={playerID} handleClose={this.handleClose} />
+        //<PlayerDetail playerID={playerID} handleClose={this.handleClose} />
       ) : null;
 
       return (

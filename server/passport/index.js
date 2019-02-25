@@ -67,7 +67,8 @@ passport.use(
 								console.log("passwords do not match");
 								return done(null, false, { message: "passwords do not match" });
 							}
-							console.log("user found and authenticated");
+							console.log("passport: user found and authenticated");
+							//console.log(user);
 							return done(null, user);
 						});
 					}

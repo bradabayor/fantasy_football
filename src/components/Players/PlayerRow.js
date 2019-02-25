@@ -5,9 +5,6 @@
 // Modules
 import React, { Component } from "react";
 
-// Stylesheets
-import "../../styles/app.scss";
-
 // Class Component
 class PlayerRow extends Component {
   constructor(props) {

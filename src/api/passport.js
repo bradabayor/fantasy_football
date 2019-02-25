@@ -1,13 +1,15 @@
-class Auth {
+class Passport {
 	static authenticateUser(token) {
 		localStorage.setItem("token", token);
 	}
 
 	static isUserAuthenticated() {
+		console.log("User auth checked");
 		return localStorage.getItem("token") !== null;
 	}
 
 	static deauthenticateUser() {
+		console.log("Deauthenticated User");
 		localStorage.removeItem("token");
 	}
 
@@ -16,4 +18,4 @@ class Auth {
 	}
 }
 
-export default Auth;
+export default Passport;

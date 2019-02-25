@@ -1,4 +1,4 @@
-import Base from "./components/Base";
+import Base from "./components/containers/Base";
 import SignInContainer from "./components/SignIn";
 import SignUpContainer from "./components/SignUp";
 

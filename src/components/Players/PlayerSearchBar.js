@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import "../../styles/app.scss";
-
 class PlayerSearchBar extends Component {
   constructor(props) {
     super(props);
@@ -27,22 +25,19 @@ class PlayerSearchBar extends Component {
           <button
             value="QB"
             onClick={this.handleClick}
-            className={activePosition === "QB" ? "active" : " "}
-          >
+            className={activePosition === "QB" ? "active" : " "}>
             QB
           </button>
           <button
             value="RB"
             onClick={this.handleClick}
-            className={activePosition === "RB" ? "active" : " "}
-          >
+            className={activePosition === "RB" ? "active" : " "}>
             RB
           </button>
           <button
             value="WR"
             onClick={this.handleClick}
-            className={activePosition === "WR" ? "active" : " "}
-          >
+            className={activePosition === "WR" ? "active" : " "}>
             WR
           </button>
           <button
@@ -52,8 +47,7 @@ class PlayerSearchBar extends Component {
               activePosition === "TE"
                 ? "player-search-button player-search-button-active"
                 : "player-search-button"
-            }
-          >
+            }>
             TE
           </button>
           <button
@@ -63,8 +57,7 @@ class PlayerSearchBar extends Component {
               activePosition === "K"
                 ? "player-search-button player-search-button-active"
                 : "player-search-button"
-            }
-          >
+            }>
             K
           </button>
         </div>

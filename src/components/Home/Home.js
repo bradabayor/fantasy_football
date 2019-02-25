@@ -9,8 +9,7 @@ import React, { Component } from "react";
 import "../../styles/app.scss";
 
 // Referenced Components
-import RedditFeed from "./RedditFeed";
-import APIFeed from "../Feed/Feed";
+//import RedditFeed from "./RedditFeed";
 
 // Component Class
 class Home extends Component {
